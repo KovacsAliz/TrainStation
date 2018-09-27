@@ -11,7 +11,11 @@ namespace TrainStation
         public double TicketPrice { get; set; }
         public double TicketPriceOnTrain { get; set; }
 
-        public Passenger(string trainSign, double monthlyCostOfTrain) : base(trainSign, monthlyCostOfTrain) { }
+        public Passenger(string trainSign, double monthlyCostOfTrain, double ticketPrice, double ticketPriceOnTrain) : base(trainSign, monthlyCostOfTrain)
+        {
+            TicketPrice = ticketPrice;
+            TicketPriceOnTrain = ticketPriceOnTrain;
+        }
 
         public double CalculateDailyIncomeByTrain(double ticketPrice, double ticketPriceOnTrain)
         {
