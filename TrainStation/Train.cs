@@ -21,10 +21,7 @@ namespace TrainStation
             _idCounter++;
         }
 
-        public double CalculateMonthlyIncomeByTrain(double dailyIncome)
-        {
-            return 12 * dailyIncome;
-        }
+        public abstract double CalculateMonthlyIncomeByTrain();
 
         public override string ToString()
         {

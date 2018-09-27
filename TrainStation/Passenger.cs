@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainStation
 {
-    public class Passenger : Train, IHavePassengersTrain
+    public class Passenger : Train
     {
         public double TicketPrice { get; set; }
         public double TicketPriceOnTrain { get; set; }
@@ -21,20 +21,20 @@ namespace TrainStation
         {
             Random rnd = new Random();
             int passengersNumber = rnd.Next(115, 250);
-            return ((passengersNumber * 0.75) * TicketPrice + ((passengersNumber * 0.25) * TicketPriceOnTrain));
-        }
-
-        public double PunishedIncome()
-        {
-            Random rnd = new Random();
             int chance = rnd.Next(0, 100);
+            double punishment = 0;
             if (chance <= 10)
             {
-                int passengersNum = rnd.Next(115, 250);
-                return passengersNum * 6;
+                punishment += passengersNumber * 6;
             }
             else
-                return 0;
+                punishment += 0;
+            return ((passengersNumber * 0.75) * TicketPrice + ((passengersNumber * 0.25) * TicketPriceOnTrain) + punishment);
+        }
+
+        public override double CalculateMonthlyIncomeByTrain()
+        {
+            return 12 * CalculateDailyIncomeByTrain(TicketPrice, TicketPriceOnTrain);
         }
 
         public override string ToString()

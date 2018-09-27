@@ -8,9 +8,12 @@ namespace TrainStation
 {
     public class Freight : Train
     {
-        public Freight(string trainSign, double monthlyCostOfTrain) : base(trainSign, monthlyCostOfTrain)
+        public Freight(string trainSign, double monthlyCostOfTrain) : base(trainSign, monthlyCostOfTrain) { }
+
+
+        public override double CalculateMonthlyIncomeByTrain()
         {
-            MonthlyRevenueOfTrain = 500.00D;
+            return 550.00D;
         }
 
         public double AddedRevenuePerMonth(int plusIncome)
@@ -27,6 +30,7 @@ namespace TrainStation
             }
             return addedRevenue;
         }
+
 
         public override string ToString()
         {

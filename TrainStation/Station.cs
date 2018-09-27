@@ -27,14 +27,12 @@ namespace TrainStation
             double totalRevenue = 0;
             foreach (var passenger in passengers)
             {
-                totalRevenue += passenger.CalculateMonthlyIncomeByTrain(passenger.CalculateDailyIncomeByTrain(passenger.TicketPrice, passenger.TicketPriceOnTrain));
-                totalRevenue += passenger.PunishedIncome();
+                totalRevenue += passenger.CalculateMonthlyIncomeByTrain();
             }
 
             foreach (var ic in iCTrains)
             {
-                totalRevenue += ic.CalculateMonthlyIncomeByTrain(ic.CalculateDailyIncomeByTrain(ic.TicketPrice, ic.TicketPriceOnTrain));
-                totalRevenue += ic.PunishedIncome();
+                totalRevenue += ic.CalculateMonthlyIncomeByTrain();
             }
 
             foreach (var freight in freights)

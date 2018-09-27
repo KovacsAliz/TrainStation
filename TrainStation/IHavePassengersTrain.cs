@@ -9,7 +9,5 @@ namespace TrainStation
     interface IHavePassengersTrain
     {
         double CalculateDailyIncomeByTrain(double ticketPrice, double ticketPriceOnTrain);
-        double CalculateMonthlyIncomeByTrain(double dailyIncome);
-        double PunishedIncome();
     }
 }
