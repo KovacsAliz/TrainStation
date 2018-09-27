@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainStation
 {
-    public class Program
+    public abstract class Train
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
