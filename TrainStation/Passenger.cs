@@ -8,21 +8,34 @@ namespace TrainStation
 {
     public class Passenger : Train, IHavePassengersTrain
     {
-        public double TicketPrice { get { return TicketPrice; } set { TicketPrice = 1.5F; } }
-        public double TicketPriceOnTrain { get { return TicketPriceOnTrain; } set { TicketPriceOnTrain = 3.5F; } }
-        
+        public double TicketPrice { get; set; }
+        public double TicketPriceOnTrain { get; set; }
+
         public Passenger(string trainSign, double monthlyCostOfTrain) : base(trainSign, monthlyCostOfTrain) { }
 
-        public double CalculateIncomeMonthly(double ticketPrice, double ticketPriceOnTrain)
+        public double CalculateDailyIncomeByTrain(double ticketPrice, double ticketPriceOnTrain)
         {
             Random rnd = new Random();
             int passengersNumber = rnd.Next(115, 250);
             return ((passengersNumber * 0.75) * TicketPrice + ((passengersNumber * 0.25) * TicketPriceOnTrain));
         }
 
-        public double PunishedIncome(int passengersNumber, double chance)
+        public double PunishedIncome()
         {
-            return passengersNumber * chance;
+            Random rnd = new Random();
+            int chance = rnd.Next(0, 100);
+            if (chance <= 10)
+            {
+                int passengersNum = rnd.Next(115, 250);
+                return passengersNum * 6;
+            }
+            else
+                return 0;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ", " + "Ticket price: " + TicketPrice + ", " + "Ticket price on the train: " + TicketPriceOnTrain;
         }
     }
 }

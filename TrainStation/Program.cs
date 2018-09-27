@@ -10,6 +10,10 @@ namespace TrainStation
     {
         static void Main(string[] args)
         {
+            Station station = new Station();
+            station.CreateStation();
+            station.PrintResult();
+            Console.ReadKey();
         }
     }
 }

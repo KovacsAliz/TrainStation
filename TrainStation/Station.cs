@@ -16,13 +16,55 @@ namespace TrainStation
 
         public void CreateStation()
         {
-            //TODO
+            for (int i = 0; i < 3; i++)
+            {
+                passengers.Add(new Passenger("P", 1000.00D));
+                iCTrains.Add(new IC("IC", 1500.00D));
+                freights.Add(new Freight("F", 1000.00D));
+            }
         }
 
-        public float CalulateTotalRevenue(float monthlyRevenue)
+        public double CalculateTotalRevenue()
         {
-            TotalRevenue = 12 * monthlyRevenue;
-            return TotalRevenue;
+            double totalRevenue = 0;
+            foreach (var passenger in passengers)
+            {
+                totalRevenue += passenger.CalculateMonthlyIncomeByTrain(passenger.CalculateDailyIncomeByTrain(1.50D, 3.50D));
+                totalRevenue += passenger.PunishedIncome();
+            }
+
+            foreach (var ic in iCTrains)
+            {
+                totalRevenue += ic.CalculateMonthlyIncomeByTrain(ic.CalculateDailyIncomeByTrain(2.00D, 4.00D));
+                totalRevenue += ic.PunishedIncome();
+            }
+
+            foreach (var freight in freights)
+            {
+                totalRevenue += freight.MonthlyRevenueOfTrain;
+            }
+            return 12 * totalRevenue;
+        }
+
+        public void PrintResult()
+        {
+            Console.WriteLine("Total revenue for a year: " + CalculateTotalRevenue());
+
+            foreach(var passenger in passengers)
+            {
+                Console.WriteLine(passenger.ToString());
+                Console.WriteLine();
+            }
+            foreach (var ic in iCTrains)
+            {
+                Console.WriteLine(ic.ToString());
+                Console.WriteLine();
+            }
+            foreach (var freight in freights)
+            {
+                Console.WriteLine(freight.ToString());
+                Console.WriteLine();
+            }
         }
     }
 }

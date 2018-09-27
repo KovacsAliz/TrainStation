@@ -11,8 +11,7 @@ namespace TrainStation
         public string SerialNumber { get; set; }
         public string TrainSign { get; set; }
         public double MonthlyCostOfTrain { get; set; }
-        public double MonthlyIncomeOfTrain { get; set; }
-        public double MonthlyRevenueOfTrain { get; set; }
+        public double MonthlyRevenueOfTrain { get; set; } // is it necessary?
         private static int _idCounter = 1;
 
         public Train(string trainSign, double monthlyCostOfTrain)
@@ -22,9 +21,15 @@ namespace TrainStation
             _idCounter++;
         }
 
-        public double CalculateMonthlyRevenue(double monthlyCostOftrain, double monthlyIncomeOfTrain)
+        public double CalculateMonthlyIncomeByTrain(double dailyIncome)
         {
-            return monthlyIncomeOfTrain - monthlyCostOftrain;
+            return 12 * dailyIncome;
+        }
+
+        public override string ToString()
+        {
+            return "Serial number: " + SerialNumber + ", " + 
+                    "Monthly cost of this train: " + MonthlyCostOfTrain;
         }
     }
 }

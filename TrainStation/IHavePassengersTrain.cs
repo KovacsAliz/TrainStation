@@ -8,7 +8,8 @@ namespace TrainStation
 {
     interface IHavePassengersTrain
     {
-        double CalculateIncomeMonthly(double ticketPrice, double ticketPriceOnTrain);
-        double PunishedIncome(int passengersNumber, double chance);
+        double CalculateDailyIncomeByTrain(double ticketPrice, double ticketPriceOnTrain);
+        double CalculateMonthlyIncomeByTrain(double dailyIncome);
+        double PunishedIncome();
     }
 }

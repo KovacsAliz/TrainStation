@@ -13,19 +13,24 @@ namespace TrainStation
             MonthlyRevenueOfTrain = 500.00D;
         }
 
-        public double AddedRevenue(int plusIncome)
+        public double AddedRevenuePerMonth(int plusIncome)
         {
             double addedRevenue = 0.00D;
             for (int i = 0; i < 4; i++)
             {
                 Random rnd = new Random();
                 int chance = rnd.Next(0, 100);
-                if (chance <= 35) //chance of freaight goes abroad
+                if (chance <= 35) //chance of freight goes abroad
                 {
-                    addedRevenue += 110.00D;
+                    addedRevenue += plusIncome;
                 }
             }
             return addedRevenue;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
